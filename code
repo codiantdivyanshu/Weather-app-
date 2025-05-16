@@ -1,0 +1,33 @@
+import requests
+
+API_KEY = "2b6a7b3ca94e93f4c26cb02fbe808e66"  
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+
+def get_weather(city):
+    params = {
+        'q': city,
+        'appid': API_KEY,
+        'units': 'metric'  
+    }
+    response = requests.get(BASE_URL, params=params)
+    data = response.json()
+
+    if response.status_code == 200:
+        print(f"\nWeather in {city.title()}:")
+        print(f"🌡 Temperature: {data['main']['temp']}°C")
+        print(f"☁ Condition: {data['weather'][0]['description'].title()}")
+        print(f"💨 Wind Speed: {data['wind']['speed']} m/s")
+    else:
+        print(f"❌ Error: {data.get('message', 'City not found')}")
+
+def main():
+    print("📡 Weather App")
+    while True:
+        city = input("\nEnter city name (or 'q' to quit): ")
+        if city.lower() == 'q':
+            print("Goodbye!")
+            break
+        get_weather(city)
+
+if __name__ == "__main__":
+    main()
