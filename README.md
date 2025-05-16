@@ -49,6 +49,14 @@ Weather in New York:
 
 7. Project structure :
 
+   4. Project Structure
+
+├── code                   # 🎯 Main Python script
+├── README.md              # 📄 Project overview and instructions
+├── .gitignore             # 🚫 Files/folders to ignore in Git
+└── LICENSE                # 📜 Project license (e.g., MIT)
+
+
    
 
   
